@@ -1,0 +1,84 @@
+// Cores
+$cor1: #E96E90
+$cor2: #FF814C
+$cor3: #F1F1F1
+$cor4: #e7e7e7
+$cor5: #636363
+    
+body
+    width: 100vw
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    padding: 10px
+    font-family: Arial, Helvetica, sans-serif
+    background-image: linear-gradient(90deg, $cor1, $cor2)
+
+.contact
+    max-width: 600px
+    display: grid
+    grid-template-columns: 1fr 1fr
+    
+    &__title
+        color: $cor5
+
+    &__left
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3)
+        z-index: 9999
+        border-radius: 10px
+        &-gif
+            width: 100%
+            height: 100%
+            object-fit: cover
+            border-radius: 10px
+
+    &__right
+        margin: 20px 0
+        padding: 10px
+        background-color: $cor3
+        border-radius: 0 10px 10px 0
+
+    .form
+        display: flex
+        flex-direction: column
+        gap: 10px            
+        &__item
+            background-color: $cor4
+            padding: 10px
+            border-radius: 30px
+            display: flex
+            gap: 10px
+            justify-content: center
+            align-items: center
+            &:focus-within
+                border: 1px solid green
+            i
+                color: $cor5
+            input
+                width: 100%
+                padding: 5px
+                outline: none
+                border: none
+                background-color: #e7e7e7
+                color: $cor5
+        &__textarea
+            outline: none
+            border-radius: 10px    
+            resize: none           
+                
+        &__btn
+            background-color: $cor2
+            border: none
+            padding: 15px
+            color: $cor3
+            font-weight: bold
+            border-radius: 30px
+            cursor: pointer
+            &:hover
+                background-color: #ce6a3f
+    
+
