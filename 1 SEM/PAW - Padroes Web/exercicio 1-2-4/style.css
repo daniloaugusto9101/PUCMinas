@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #c99090;
+  transition: all 0.5s;
+  cursor: pointer;
+  border: 2px solid black;
+}
+header:hover {
+  background-color: #7f5e5e;
+}
+
+main {
+  border: 2px solid black;
+}
+main .link {
+  border: 1px solid black;
+  display: block;
+  padding: 20px;
+}
+main .container {
+  display: flex;
+  justify-content: space-between;
+}
+main .avatar {
+  border: 1px solid black;
+  padding: 10px;
+}
+main .table-container table {
+  width: 100%;
+}
+
+footer {
+  border: 2px solid black;
+}
+
+/*# sourceMappingURL=style.css.map */

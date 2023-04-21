@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Prática CSS - Exercício 1.2.2</title>
+    <style>
+        body{
+            display: flex;
+        }
+
+        div{
+            border: 2px solid gray;
+            margin-right: 20px;
+        }
+
+        #bloco1{
+            background-color: tomato;
+            color: #fff;
+        }
+        #bloco2{
+            background-color: rgb(117, 255, 71);
+            color: blue;
+        }
+
+        #bloco2:hover{
+            background-color: blue;
+            color:  rgb(117, 255, 71);
+        }
+
+        .bloco3{
+            background-color: rgb(36, 152, 86);
+            color: brown;
+        }
+
+        
+
+
+    </style>
+</head>
+
+<body>
+
+    <div id="bloco1">
+        <h2>Bloco 1</h2>
+    </div>
+
+    <div id="bloco2">
+        <span>Bloco 2</span>
+        <span>Texto em linha </span>
+        <h5>Parágrafo 5</h5>
+    </div>
+
+    <div class="bloco3">
+        Bloco 2
+        <p>Parágrafo 1</p>
+    </div>
+</body>
+
+</html>
