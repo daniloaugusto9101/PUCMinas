@@ -1,16 +1,26 @@
 
-const tempAlunos = {
-    nome: "Danilo",
-    total: '300',
-    media: '100',
-    resultado: 'aprovado',
-}
+
 // Metodos de interação com o banco (Local Storage)
 const getBancoAluno = () => JSON.parse(localStorage.getItem('dbAlunos')) ?? [];
 const setBancoAluno = (bancoAlunos) => localStorage.setItem("dbAlunos", JSON.stringify(bancoAlunos));
 
-// Monta a tabela notas com dados do banco
+const asd = document.querySelector("#aluno").value
 
+
+
+const tempAlunos = {
+    nome: document.querySelector("#aluno").value,
+    total: document.querySelector("#notaHtml").value,
+    media: document.querySelector("#notaCSS").value,
+    resultado: document.querySelector("#notaJS").value,
+}
+
+
+// Monta a tabela notas com dados do banco
+const tabelaNotas = () => {   
+
+    // console.log(tabelaNotas);
+}
 
 // Pega todos os dados da tabela notas
 const getTabeleAlunos = () => {
@@ -30,12 +40,17 @@ const getTabeleAlunos = () => {
     return vet
 }
 
+// Salva as notas no banco
 const salvarBancoAlunos = () => {
-    const bancoAlunos = getTabeleAlunos();
-    setBancoAluno(bancoAlunos); 
+    // const bancoAlunos = getTabeleAlunos();
+    // setBancoAluno(bancoAlunos); 
+    // tabelaNotas();
+    console.log(tempAlunos);
 }
-
 
 // Eventos
 document.querySelector('#btnSalvar')
     .addEventListener('click',salvarBancoAlunos)
+
+document.querySelector('#adicionar')
+    .addEventListener('click',tempAlunos)
