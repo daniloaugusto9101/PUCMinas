@@ -1,0 +1,14 @@
+.tbNotas {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+.tbNotas thead {
+  background-color: black;
+  color: white;
+}
+.tbNotas tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+
+/*# sourceMappingURL=style.css.map */
