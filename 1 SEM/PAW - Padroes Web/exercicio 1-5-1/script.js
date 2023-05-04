@@ -35,7 +35,7 @@ const salvarBancoAlunos = () => {
 // Pega os dados do banco e monta a tabela alunos
 const montaTabela = () =>{
     const bancoALunos = getBancoAluno();
-    bancoALunos.forEach(newRow)    
+    bancoALunos.forEach(newRow2)    
 }
 // =========================================================================================
 // FIM - métodos interaçãoes do banco para a tabela resultado de notas
@@ -51,6 +51,18 @@ const montaTabela = () =>{
 // Verifica a media e rotorna o resultao
 const resultadoNota = (numero) => (numero >= 70) ? "Aprovado" : "Reprovado"; 
 
+
+// cria linhas
+const newRow2 = (aluno) =>{
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${aluno.aluno}</td>
+        <td>${aluno.total}</td>
+        <td>${(aluno.media)}</td>
+        <td>${(aluno.resultado)}</td>
+        `;
+    document.querySelector('#tbNotas tbody').appendChild(row);
+}
 
 // cria linhas
 const newRow = (aluno) =>{
