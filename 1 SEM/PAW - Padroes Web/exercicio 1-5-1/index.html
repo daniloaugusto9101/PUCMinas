@@ -5,89 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Icos  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Notas de Alunos</title>
 </head>
 <body>
     <div class="container">
-        <div>
-            <label for="aluno">Aluno</label>   
-            <input type="text" name="aluno" id="aluno"> 
+
+        <div class="card">
+            <div class="card__header">
+                <h1>Adicionar nota</h1>
+            </div>
+            <div class="card__body">
+                <!-- <form id="formNotas"> -->
+                    <div>
+                        <label for="aluno">Nome do aluno</label>
+                        <input type="text" name="aluno" id="aluno"  required> 
+                    </div>
+                    <div class="card__body-container">
+                        <div>
+                            <label for="notaHtml">Nota HTML</label>   
+                            <input type="number" name="notaHtml" id="notaHtml" min="0" max="100" step="10" required> 
+                        </div>
+                        <div>
+                            <label for="notaCSS">Nota CSS</label>   
+                            <input type="number" name="notaCSS" id="notaCSS" min="0" max="100" step="10" required> 
+                        </div>
+                        <div>
+                            <label for="notaJS">Nota Javascript</label>   
+                            <input type="number" name="notaJS" id="notaJS" min="0" max="100" step="10" required> 
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <button id="adicionar" class="btn btn--add "><i class="fa-solid fa-user-plus"></i>Add Notas</button>
+                    </div>
+                <!-- </form> -->
+            </div>
         </div>
-        <div>
-            <label for="aluno">Nota HTML</label>   
-            <input type="text" name="aluno" id="notaHtml"> 
+        <table id="tbNotas" class="tbNotas">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Total</th>
+                    <th>Media</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <div class="btns">
+            <button id="btnSalvar" class="btn"><i class="fa-solid fa-floppy-disk"></i>Salvar no Navagador</button>
         </div>
-        <div>
-            <label for="aluno">Nota CSS</label>   
-            <input type="text" name="aluno" id="notaCSS"> 
-        </div>
-        <div>
-            <label for="aluno">Nota Javascript</label>   
-            <input type="text" name="aluno" id="notaJS"> 
-        </div>
-        <button id="adicionar">Adicionar</button>
     </div>   
-    <table id="tbNotas">
-        <thead>
-            <tr>
-                <th>Aluno</th>
-                <th>Total</th>
-                <th>Media</th>
-                <th>Resultado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Danilo</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <tr>
-                <td>Danilo</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <tr>
-                <td>Danilo</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <!-- <tr>
-                <td>Carlos</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <tr>
-                <td>Maria</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <tr>
-                <td>Jose</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <tr>
-                <td>Carlos</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr>
-            <tr>
-                <td>Ricardo</td>
-                <td>300</td>
-                <td>100</td>
-                <td>Aprovado</td>
-            </tr> -->
-        </tbody>
-    </table>
-    <button id="btnSalvar">Salvar no Navagador</button>
     <script src="script.js"></script>
 </body>
 </html>
