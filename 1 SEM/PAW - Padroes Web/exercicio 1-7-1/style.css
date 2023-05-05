@@ -1,0 +1,29 @@
+.container{
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.card{
+    border: 1px solid black;
+    min-height: 100px;
+}
+
+.noticias{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+aside{
+    width: 19.8%;
+
+}
+
+
+@media (max-width: 960px){
+    aside:nth-child(5){
+        width: 100%;
+    } 
+}
+@media (max-width: 480px){
+
+}
