@@ -40,6 +40,13 @@ sup {
   padding: 20px 60px;
   gap: 20px;
 }
+.row:last-child {
+  color: #F0F0F0;
+}
+
+#cronometro {
+  color: #F0F0F0;
+}
 
 .col-4 {
   display: flex;
