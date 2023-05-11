@@ -27,7 +27,7 @@
 <body>
     
     <!-- Modal -->   
-    <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-xl" id="modalAddNoticias" tabindex="-1" aria-labelledby="modalAddNoticiasLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -35,18 +35,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="formNoticias">
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Título da notícia</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <label for="recipient-name" class="col-form-label ">Título da notícia</label>
+                <input type="text" class="form-control input-titulo" id="recipient-name">
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Texto da notícia</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <textarea class="form-control input-texto" id="message-text"></textarea>
               </div>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">tag</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control input-tag" id="recipient-name">
               </div>
             </form>
           </div>
@@ -79,7 +79,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalAddNoticias" href="#">
                             Adicionar noticia
                         </a>
                     </li>
