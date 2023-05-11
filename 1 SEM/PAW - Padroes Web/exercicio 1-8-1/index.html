@@ -25,6 +25,38 @@
 </head>
 
 <body>
+    
+    <!-- Modal -->   
+    <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar noticia</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Título da notícia</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Texto da notícia</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">tag</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Adicionar notícia</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Inicio Barra de navegação -->
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" id="header-container">
@@ -47,7 +79,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
                             Adicionar noticia
                         </a>
                     </li>
@@ -104,6 +136,7 @@
                             <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <small class="text-body-secondary">01/05/2023 19:21:01</small>
+                                <small class="text-primary border border-primary-subtle p-1">Filmes</small>
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
@@ -127,6 +160,7 @@
                             <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <small class="text-body-secondary">01/05/2023 19:21:01</small>
+                                <small class="text-primary border border-primary-subtle p-1">Filmes</small>
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
@@ -150,6 +184,7 @@
                             <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <small class="text-body-secondary">01/05/2023 19:21:01</small>
+                                <small class="text-primary border border-primary-subtle p-1">Filmes</small>
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
@@ -173,6 +208,7 @@
                             <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <small class="text-body-secondary">01/05/2023 19:21:01</small>
+                                <small class="text-primary border border-primary-subtle p-1">Filmes</small>
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
@@ -196,6 +232,7 @@
                             <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <small class="text-body-secondary">01/05/2023 19:21:01</small>
+                                <small class="text-primary border border-primary-subtle p-1">Filmes</small>
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
@@ -219,6 +256,7 @@
                             <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <small class="text-body-secondary">01/05/2023 19:21:01</small>
+                                <small class="text-primary border border-primary-subtle p-1">Filmes</small>
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
