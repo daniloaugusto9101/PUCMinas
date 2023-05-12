@@ -1,3 +1,5 @@
+// Autor: Danilo Augusto
+
 // fetch("header.html")
 //   .then(response => response.text())
 //   .then(data => {
@@ -113,7 +115,7 @@ const salvarBancoAlunos = () => {
 }
 
 addCategorias();
-mostrarNoticias();
+// mostrarNoticias();
 
 document.querySelector('#btnAddNoticias')
     .addEventListener('click', salvarBancoAlunos);
