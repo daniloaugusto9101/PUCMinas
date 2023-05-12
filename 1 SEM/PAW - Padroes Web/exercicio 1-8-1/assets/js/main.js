@@ -14,7 +14,7 @@ const getCategorias = (categoria) => {
     const bd = getBancoNoticias();
     const categoriaSelecionada = bd.filter(ele => ele.tag === categoria);
 
-    return (categoria == undefined)
+    return (categoria == undefined || categoria == "Todas as categorias")
         ? bd
         : categoriaSelecionada
 }
@@ -38,7 +38,8 @@ const addClick = (id) => {
     const link = document.querySelectorAll(id);
     link.forEach(element => {
         element.addEventListener('click', event => {
-            mostrarNoticias(event.target.textContent)
+            mostrarNoticias(event.target.textContent);
+            console.log(event.target.textContent);
         })
     });
 }
@@ -60,13 +61,6 @@ const addCategorias = () => {
     // Adciiona o evento addEventListener quando a tag e crada
     addClick('#card-body-categorias a');
 }
-
-
-
-
-
-
-
 
 // Mostra as noticias do site que estao no banco de dados
 const mostrarNoticias = (categoria) => {
@@ -142,5 +136,13 @@ document.querySelector('#btnAddNoticias')
 
 document.getElementById('modalAddNoticias')
     .addEventListener('hidden.bs.modal', clearInputNoticia)
+
+document.querySelector('#button-pesquisar')   
+    .addEventListener('click', ()=>{
+        const inputPesquisa = document.querySelector('#input-pesquisar');
+        mostrarNoticias(inputPesquisa.value);
+    })
+
+
 
 
