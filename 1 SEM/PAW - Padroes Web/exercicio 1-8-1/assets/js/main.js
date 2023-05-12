@@ -7,36 +7,41 @@
 //   });
 
 // Metodos de interação com o banco de dados (Local Storage)
-const getBancoNoticias = () => JSON.parse(localStorage.getItem('dbNoticias')) ?? [];
-const setBancoNoticias = (noticia) => localStorage.setItem("dbNoticias", JSON.stringify(noticia));
+const getBancoNoticias = () => JSON.parse(localStorage.getItem('bdNoticias')) ?? [];
+const setBancoNoticias = (noticia) => localStorage.setItem("bdNoticias", JSON.stringify(noticia));
 
 const getCategorias = (categoria) => {
     const bd = getBancoNoticias();
     const categoriaSelecionada = bd.filter(ele => ele.tag === categoria);
 
-    if (categoria == undefined) {
-        return bd
-    } else {
-        return categoriaSelecionada
-    }
+    return (categoria == undefined)
+        ? bd
+        : categoriaSelecionada
 }
 
 // Gera a data e hora no formato desejado
 const dataAtual = () => {
     // Obtenha a data e hora atual
     const dataHoraAtual = new Date();
-
     const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
     const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
     const ano = dataHoraAtual.getFullYear();
     const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
     const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
     const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
-
     const dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}:${segundos}`;
     return dataHoraFormatada // Saída: 01/05/2023 19:21:01
 }
 
+// evento de clique nos links
+const addClick = (id) => {
+    const link = document.querySelectorAll(id);
+    link.forEach(element => {
+        element.addEventListener('click', event => {
+            mostrarNoticias(event.target.textContent)
+        })
+    });
+}
 
 // Mostra na lateral do site as categorias que estao no banco de dados
 const addCategorias = () => {
@@ -48,18 +53,32 @@ const addCategorias = () => {
         row.innerHTML = `
             <a href="#" class="link">${tag}</a>
         `;
+        const link = document.querySelector("a");
         document.querySelector('#card-body-categorias').appendChild(row);
+
     });
+    // Adciiona o evento addEventListener quando a tag e crada
+    addClick('#card-body-categorias a');
 }
+
+
+
+
+
+
 
 
 // Mostra as noticias do site que estao no banco de dados
 const mostrarNoticias = (categoria) => {
     const noticias = getCategorias(categoria);
+    const containerNoticias = document.querySelector('#container-noticias');
+    containerNoticias.innerHTML = "";
+
 
     noticias.forEach(noticia => {
         const div = document.createElement('div');
         div.classList.add('col');
+
 
         div.innerHTML = `
                 <div class="card">
@@ -81,7 +100,8 @@ const mostrarNoticias = (categoria) => {
                     </div>
                 </div>
             `;
-        document.querySelector('#container-noticias').appendChild(div);
+
+        containerNoticias.appendChild(div);
     });
 }
 
@@ -115,11 +135,12 @@ const salvarBancoAlunos = () => {
 }
 
 addCategorias();
-// mostrarNoticias();
+mostrarNoticias();
 
 document.querySelector('#btnAddNoticias')
     .addEventListener('click', salvarBancoAlunos);
 
 document.getElementById('modalAddNoticias')
     .addEventListener('hidden.bs.modal', clearInputNoticia)
+
 
