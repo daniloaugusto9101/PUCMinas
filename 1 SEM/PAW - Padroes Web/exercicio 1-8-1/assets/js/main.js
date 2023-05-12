@@ -8,6 +8,17 @@
 const getBancoNoticias = () => JSON.parse(localStorage.getItem('dbNoticias')) ?? [];
 const setBancoNoticias = (noticia) => localStorage.setItem("dbNoticias", JSON.stringify(noticia));
 
+const getCategorias = (categoria) => {
+    const bd = getBancoNoticias();
+    const categoriaSelecionada = bd.filter(ele => ele.tag === categoria);
+
+    if (categoria == undefined) {
+        return bd
+    } else {
+        return categoriaSelecionada
+    }
+}
+
 // Gera a data e hora no formato desejado
 const dataAtual = () => {
     // Obtenha a data e hora atual
@@ -28,42 +39,46 @@ const dataAtual = () => {
 // Mostra na lateral do site as categorias que estao no banco de dados
 const addCategorias = () => {
     const categorias = getBancoNoticias();
-    categorias.forEach(categoria => {
+    const tags = [...new Set(categorias.map((ele) => ele.tag))];
+
+    tags.forEach(tag => {
         const row = document.createElement('p');
         row.innerHTML = `
-            <a href="#" class="link">${categoria.tag}</a>
+            <a href="#" class="link">${tag}</a>
         `;
         document.querySelector('#card-body-categorias').appendChild(row);
     });
 }
 
+
 // Mostra as noticias do site que estao no banco de dados
-const addNoticias = () => {
-    const noticias = getBancoNoticias();
+const mostrarNoticias = (categoria) => {
+    const noticias = getCategorias(categoria);
+
     noticias.forEach(noticia => {
         const div = document.createElement('div');
         div.classList.add('col');
 
         div.innerHTML = `
-            <div class="card">
-                <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <small class="text-body-secondary">${noticia.tempo}</small>
-                    <small class="text-primary border border-primary-subtle p-1">${noticia.tag}</small>
-                    <h5 class="card-title">${noticia.titulo.slice(0,50)}...</h5>
-                    <p class="card-text">${noticia.conteudo.slice(0,150)}...</p>
-                    <button type="button" class="btn btn-primary">
-                        Ver mais
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
-                            </path>
-                        </svg>
-                    </button>
+                <div class="card">
+                    <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <small class="text-body-secondary">${noticia.tempo}</small>
+                        <small class="text-primary border border-primary-subtle p-1">${noticia.tag}</small>
+                        <h5 class="card-title">${noticia.titulo.slice(0, 50)}...</h5>
+                        <p class="card-text">${noticia.conteudo.slice(0, 150)}...</p>
+                        <button type="button" class="btn btn-primary">
+                            Ver mais
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
         document.querySelector('#container-noticias').appendChild(div);
     });
 }
@@ -80,12 +95,13 @@ const getInputNoticia = () => {
     return obj;
 }
 
-// Limpa os inputs da modal quando ela é fechada
+// Limpa os inputs do modal quando ela é fechada
 const clearInputNoticia = () => {
     const inputs = getInputNoticia();
     document.querySelector('#formNoticias .input-titulo').value = "";
-    document.querySelector('#formNoticias .input-texto').value= "";
-    document.querySelector('#formNoticias .input-tag').value= "";
+    document.querySelector('#formNoticias .input-texto').value = "";
+    document.querySelector('#formNoticias .input-tag').value = "";
+    location.reload();
 }
 
 // Salva as noticias do modal no banco
@@ -96,13 +112,8 @@ const salvarBancoAlunos = () => {
     setBancoNoticias(bd);
 }
 
-const atualizarPagina = () => {
-    location.reload();
-    console.log("atulizou");
-}
-
 addCategorias();
-addNoticias();
+mostrarNoticias();
 
 document.querySelector('#btnAddNoticias')
     .addEventListener('click', salvarBancoAlunos);
