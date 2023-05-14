@@ -1,10 +1,8 @@
 // Autor: Danilo Augusto
 
-// fetch("header.html")
-//   .then(response => response.text())
-//   .then(data => {
-//     document.getElementById("header-container").innerHTML = data;
-//   });
+
+
+
 
 // Metodos de interação com o banco de dados (Local Storage)
 const getBancoNoticias = () => JSON.parse(localStorage.getItem('bdNoticias')) ?? [];
@@ -62,6 +60,41 @@ const addCategorias = () => {
     addClick('#card-body-categorias a');
 }
 
+const getVerMaisNoticias = (id) => {
+    const bd = getBancoNoticias();
+    const materia = bd.find((ele, index)=>{
+        return index == id
+    });
+    return materia
+}
+
+
+const verMaisNoticias = (id) => {
+    const titulo = document.querySelector('#titulo-materia')
+    const meteria = getVerMaisNoticias(id);
+    titulo.innerHTML = `
+        <h1>${meteria.titulo}</h1>
+    `;
+
+    const containerNoticias = document.querySelector('#container-noticias');
+    containerNoticias.classList.remove("row-cols-md-2")
+    containerNoticias.classList.add("row-cols-md-1")
+    containerNoticias.innerHTML = `
+    <div class="card">
+        <img src="./assets/img/img-not-found.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <small class="text-body-secondary">${meteria.tempo}</small>
+            <small class="text-primary border border-primary-subtle p-1">${meteria.titulo}</small>
+            <h5 class="card-title">${meteria.titulo}</h5>
+            <p class="card-text">${meteria.conteudo}</p>
+        </div>
+    </div>
+`;
+
+    console.log(meteria);
+}
+
+
 // Mostra as noticias do site que estao no banco de dados
 const mostrarNoticias = (categoria) => {
     const noticias = getCategorias(categoria);
@@ -69,7 +102,7 @@ const mostrarNoticias = (categoria) => {
     containerNoticias.innerHTML = "";
 
 
-    noticias.forEach(noticia => {
+    noticias.forEach((noticia, id) => {
         const div = document.createElement('div');
         div.classList.add('col');
 
@@ -80,9 +113,9 @@ const mostrarNoticias = (categoria) => {
                     <div class="card-body">
                         <small class="text-body-secondary">${noticia.tempo}</small>
                         <small class="text-primary border border-primary-subtle p-1">${noticia.tag}</small>
-                        <h5 class="card-title">${noticia.titulo.slice(0, 50)}...</h5>
+                        <h5 class="card-title">${noticia.titulo.slice(0, 50)}</h5>
                         <p class="card-text">${noticia.conteudo.slice(0, 150)}...</p>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary btn-verNoticias" data-id-materia="${id}" id="btn-verNoticias">
                             Ver mais
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -97,6 +130,13 @@ const mostrarNoticias = (categoria) => {
 
         containerNoticias.appendChild(div);
     });
+
+    document.querySelectorAll(".btn-verNoticias")
+        .forEach(element => {
+            element.addEventListener('click', ()=>{
+                verMaisNoticias(element.getAttribute("data-id-materia"));
+            })
+        });
 }
 
 
@@ -121,7 +161,7 @@ const clearInputNoticia = () => {
 }
 
 // Salva as noticias do modal no banco
-const salvarBancoAlunos = () => {
+const salvarBancoNoticias = () => {
     const noticia = getInputNoticia();
     const bd = getBancoNoticias();
     bd.push(noticia);
@@ -132,13 +172,13 @@ addCategorias();
 mostrarNoticias();
 
 document.querySelector('#btnAddNoticias')
-    .addEventListener('click', salvarBancoAlunos);
+    .addEventListener('click', salvarBancoNoticias);
 
 document.getElementById('modalAddNoticias')
     .addEventListener('hidden.bs.modal', clearInputNoticia)
 
-document.querySelector('#button-pesquisar')   
-    .addEventListener('click', ()=>{
+document.querySelector('#button-pesquisar')
+    .addEventListener('click', () => {
         const inputPesquisa = document.querySelector('#input-pesquisar');
         mostrarNoticias(inputPesquisa.value);
     })
