@@ -62,7 +62,7 @@ const addCategorias = () => {
 
 const getVerMaisNoticias = (id) => {
     const bd = getBancoNoticias();
-    const materia = bd.find((ele, index)=>{
+    const materia = bd.find((ele, index) => {
         return index == id
     });
     return materia
@@ -133,7 +133,7 @@ const mostrarNoticias = (categoria) => {
 
     document.querySelectorAll(".btn-verNoticias")
         .forEach(element => {
-            element.addEventListener('click', ()=>{
+            element.addEventListener('click', () => {
                 verMaisNoticias(element.getAttribute("data-id-materia"));
             })
         });
